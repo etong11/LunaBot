@@ -20,14 +20,21 @@ public class CargoSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private VictorSPX intakeMotor;
-  private VictorSPX 
+  private VictorSPX shooterMotor;
 
   public CargoSubsystem(){
-      intakeMotor=new VictorSPX(ControlMode, RobotMap.INTAKE_MOTOR_PORT);
+      intakeMotor=new VictorSPX(RobotMap.INTAKE_MOTOR_PORT);
+      shooterMotor=new VictorSPX(RobotMap.SHOOTER_MOTOR_PORT);
+
+      shooterMotor.follow(intakeMotor);
   }
 
-  public void intakeBall(){
-      
+  public void cargoForward(){
+    intakeMotor.set(ControlMode.PercentOutput, 1.0);
+  }
+
+  public void cargoReverse(){
+    intakeMotor.set(ControlMode.PercentOutput, -1.0);
   }
 
   @Override

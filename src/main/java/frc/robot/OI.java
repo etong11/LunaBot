@@ -8,7 +8,11 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ExtendHatch;
+import frc.robot.commands.IntakeShootCargo;
+import frc.robot.commands.RetractHatch;
+import frc.robot.commands.ReleaseCargo;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,10 +20,17 @@ import edu.wpi.first.wpilibj.buttons.Button;
  */
 public class OI {
   public Joystick driverController=new Joystick(RobotMap.DRIVER_CONTROLLER);
-  public Button intakeButtonIn=new Button(driverController,3);
-  public Button intakeButtonOut=new Button(driverController,4);
-  public Button hatchButtonUp=new Button(driverController,5);
-  public Button hatchButtonDown=new Button(driverController,6);
+  public JoystickButton intakeShootButton=new JoystickButton(driverController,3);
+  public JoystickButton cargoReleaseButton=new JoystickButton(driverController,4);
+  public JoystickButton hatchExtendButton=new JoystickButton(driverController,5);
+  public JoystickButton hatchRetractButton=new JoystickButton(driverController,6);
+
+  public OI(){
+    intakeShootButton.whileHeld(new IntakeShootCargo());
+    cargoReleaseButton.whileHeld(new ReleaseCargo());
+    hatchExtendButton.whenPressed(new ExtendHatch());
+    hatchRetractButton.whenPressed(new RetractHatch());
+  }
 
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
