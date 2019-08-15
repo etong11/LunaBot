@@ -7,25 +7,42 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-/**
- * Add your docs here.
- */
-public class ReleaseCargo extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
+public class ReleaseCargo extends Command {
   public ReleaseCargo() {
-    super();
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_cargoSubsystem);
   }
 
-  // Called once when the command executes
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+  }
+
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  protected void execute() {
     Robot.m_cargoSubsystem.cargoReverse();
+  }
+
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    return false;
+  }
+
+  // Called once after isFinished returns true
+  @Override
+  protected void end() {
+    Robot.m_cargoSubsystem.motorStop();
+  }
+
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  @Override
+  protected void interrupted() {
+    end();
   }
 }
