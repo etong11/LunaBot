@@ -37,6 +37,10 @@ public class CargoSubsystem extends Subsystem {
     intakeMotor.set(ControlMode.PercentOutput, -1.0);
   }
 
+  public void motorStop(){
+    intakeMotor.set(ControlMode.PercentOutput, 0);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
