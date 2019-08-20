@@ -32,6 +32,8 @@ public class RobotMap {
   public static final int INTAKE_MOTOR_PORT=3;
   public static final int SHOOTER_MOTOR_PORT=4;
 
-  public static final int HATCH_SOLENOID_PORT1=5;
-  public static final int HATCH_SOLENOID_PORT2=6;
+  /* public static final int HATCH_SOLENOID_PORT1=5;
+  public static final int HATCH_SOLENOID_PORT2=6; */
+
+  public static final int HATCH_MOTOR_PORT=5;
 }
