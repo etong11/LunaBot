@@ -30,11 +30,11 @@ public class CargoSubsystem extends Subsystem {
   }
 
   public void cargoForward(){
-    intakeMotor.set(ControlMode.PercentOutput, 1.0);
+    intakeMotor.set(ControlMode.PercentOutput, 0.6);
   }
 
   public void cargoReverse(){
-    intakeMotor.set(ControlMode.PercentOutput, -1.0);
+    intakeMotor.set(ControlMode.PercentOutput, -0.6);
   }
 
   public void motorStop(){
